@@ -71,12 +71,7 @@
             Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
             velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
           </p>
-          
 
-          <!-- <div class="position-relative mt-4">
-            <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-          </div> -->
         </div>
       </div>
     </div>
@@ -90,10 +85,7 @@
             <h2>Nos partenaires</h2>
             
           </div>
-          <div class="container" data-aos="zoom-out">
-    
-            <div class="clients-slider swiper">
-              
+          <div class="container swiper-container " data-aos="zoom-out" >              
               <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide"><img src="@/assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
                 <div class="swiper-slide"><img src="@/assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
@@ -104,8 +96,7 @@
                 <div class="swiper-slide"><img src="@/assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
                 <div class="swiper-slide"><img src="@/assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
               </div>
-            </div>
-    
+              <div class="swiper-pagination"></div>
           </div>
    </section>
         <!-- End Clients Section -->
@@ -285,6 +276,11 @@
 </template>
 
 <script>
+
+//  import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/css';
+import Swiper from 'swiper/bundle';
+import 'swiper/swiper-bundle.css';
   import { ref, onMounted } from 'vue';
 
 
@@ -292,6 +288,8 @@ export default {
 
 
   name: 'MpmeHomeView',
+
+   
  
 
   data() {
@@ -305,6 +303,40 @@ export default {
         this.$glightbox('.glightbox');
       });
     });
+    const swiper = new Swiper('.swiper-container', {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 40
+        },
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 60
+        },
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 80
+        },
+        992: {
+          slidesPerView: 6,
+          spaceBetween: 120
+        }
+      }
+    });
+  
+   
   },
 
 
